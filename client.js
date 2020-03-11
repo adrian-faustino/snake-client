@@ -13,11 +13,33 @@ const connect = function() {
 
   conn.on('connect', () => { //so basically conn is the name of the connection...
     conn.write('Name: ADN');
-    setInterval(() => { conn.write('Move: up'); }, 1000);
+    // setInterval(() => { conn.write('Move: up'); }, 1000);
     console.log('Successfully connected to game server!');
   });
 
   return conn;
 };
 
-module.exports = { connect };
+const setupInput = function() {
+  const stdin = process.stdin; //this is input
+  stdin.setRawMode(true);
+  stdin.setEncoding('utf8');
+  stdin.resume();
+
+  stdin.on('data', (data) => {
+    handleUserInput(data);
+  });
+
+  return stdin;
+};
+
+const handleUserInput = function(key) {
+  if (key === '\u0003') {
+    return process.exit();
+  }
+};
+
+module.exports = { 
+  connect,
+  setupInput,
+ };
