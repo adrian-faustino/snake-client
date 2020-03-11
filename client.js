@@ -13,6 +13,7 @@ const connect = function() {
 
   conn.on('connect', () => { //so basically conn is the name of the connection...
     conn.write('Name: ADN');
+    setInterval(() => { conn.write('Move: up'); }, 1000);
     console.log('Successfully connected to game server!');
   });
 
