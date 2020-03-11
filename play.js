@@ -8,4 +8,6 @@ const {
 
 
 console.log('Connecting . . .');
-connect();
+let conn = connect();
+conn;
+setupInput(conn);
