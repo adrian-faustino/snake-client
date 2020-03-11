@@ -16,6 +16,7 @@ const setupInput = function(conn) {
 };
 
 const handleUserInput = function(key) {
+  const quoteList = ['Headshot!', 'Adrian is on a  KILLING SPREE', 'Ooof..', 'Next!', ';)', 'MONSTER KILL', 'GODLIKE', 'Fresh meat', 'OWNAGE', ':P', ':O', '¯\\_(o_o)_/¯)'];
   if (key === '\u0003') {
     return process.exit();
   }
@@ -28,7 +29,18 @@ const handleUserInput = function(key) {
       return connection.write('Move: down');
     case 'd':
       return connection.write('Move: right');
+    case 'r':
+      return connection.write('Say: HEADSHOT!');
+    case 'e':
+      return connection.write('Say: ¯\_(ツ)_/¯)');
+    case 'q':
+      return connection.write(`Say: ${quoteList[randomNumber(0, quoteList.length - 1)]}`);
+      
   }
 };
+
+function randomNumber(min, max) {
+  return Math.floor(Math.random() * (max - min + 1));
+}
 
 module.exports = { setupInput };
