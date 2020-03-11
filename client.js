@@ -11,6 +11,11 @@ const connect = function() {
     console.log(data);
   });
 
+  conn.on('connect', () => { //so basically conn is the name of the connection...
+    conn.write('Name: ADN');
+    console.log('Successfully connected to game server!');
+  });
+
   return conn;
 };
 
